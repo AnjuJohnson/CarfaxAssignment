@@ -36,16 +36,21 @@ class CarlistAdapter (
             listener.onRecyclerViewItemClick(holder.model, mCarlist[position])
 
         }
+        holder.cardView.setOnClickListener {
+            listener.onRecyclerViewItemClick(holder.cardView, mCarlist[position])
+
+        }
     }
 
     override fun getItemCount(): Int {
         return mCarlist.size
     }
 
-    class QuestionViewHolder(val containerView: View) : RecyclerView.ViewHolder(containerView) {
-        val year = containerView.yearText;
-        val make = containerView.makeTextview;
-        val model = containerView.modelTextview;
-        val image = containerView.CarimageView;
+    class QuestionViewHolder(containerView: View) : RecyclerView.ViewHolder(containerView) {
+        val year = containerView.yearText
+        val make = containerView.makeTextview
+        val model = containerView.modelTextview
+        val image = containerView.CarimageView
+        val cardView = containerView.carCardview
     }
 }

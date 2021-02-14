@@ -4,6 +4,7 @@ import androidx.annotation.Nullable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "car_table")
 data class Car(
@@ -70,23 +71,23 @@ data class Car(
     @ColumnInfo
     @Nullable
     val dealer: dealer? = null
-)
+): Serializable
 
 data class Carlist(
     var listings: List<Car>
-)
+):Serializable
 
 data class firstphoto(
     val medium: String
-)
+):Serializable
 
 data class image(
     val firstPhoto: firstphoto
-)
+): Serializable
 
 data class dealer(
     val city: String,
     val state: String,
     val phone: String
 
-)
+): Serializable

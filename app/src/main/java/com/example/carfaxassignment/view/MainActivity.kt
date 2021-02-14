@@ -14,6 +14,7 @@ import com.example.carfaxassignment.api.CarApi
 import com.example.carfaxassignment.listener.RecyclerViewClickListener
 import com.example.carfaxassignment.model.Car
 import com.example.carfaxassignment.repository.CarRepository
+import com.example.carfaxassignment.util.IntentKeys
 import com.example.carfaxassignment.viewmodel.CarListViewModel
 import com.example.carfaxassignment.viewmodel.CarViewmodelFactory
 import kotlinx.android.synthetic.main.activity_carlist.*
@@ -30,13 +31,12 @@ class MainActivity : AppCompatActivity(), RecyclerViewClickListener {
         factory = CarViewmodelFactory(repository)
         viewModel = ViewModelProviders.of(this, factory).get(CarListViewModel::class.java)
 
-      //  viewModel.getCarList()
+        //  viewModel.getCarList()
 
-       viewModel.getAllCar {
-            if (it.size==0) {
+        viewModel.getAllCar {
+            if (it.size == 0) {
                 viewModel.getCarList()
-            }
-           else{
+            } else {
                 setadapter(it)
             }
         }
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), RecyclerViewClickListener {
         })
     }
 
-    private fun setadapter(carlist:List<Car>){
+    private fun setadapter(carlist: List<Car>) {
         runOnUiThread {
             recycler_view_car.also {
                 it.layoutManager = LinearLayoutManager(this)
@@ -60,6 +60,11 @@ class MainActivity : AppCompatActivity(), RecyclerViewClickListener {
         when (view.id) {
             R.id.modelTextview -> {
                 val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${car.dealer?.phone}"))
+                startActivity(intent)
+            }
+            R.id.carCardview -> {
+                val intent = Intent(this, CarProfileActivity::class.java)
+                intent.putExtra(IntentKeys.CAR_ITEM, car)
                 startActivity(intent)
             }
 
