@@ -13,12 +13,11 @@ import com.example.carfaxassignment.model.Car
 import kotlinx.android.synthetic.main.item_carlist.view.*
 
 
-class CarlistAdapter (
+class CarlistAdapter(
     private val context: Context,
     private val mCarlist: List<Car>,
     private val listener: RecyclerViewClickListener
-)
-    : RecyclerView.Adapter<CarlistAdapter.QuestionViewHolder>() {
+) : RecyclerView.Adapter<CarlistAdapter.QuestionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_carlist, parent, false)
@@ -26,14 +25,19 @@ class CarlistAdapter (
     }
 
     override fun onBindViewHolder(holder: QuestionViewHolder, position: Int) {
-        holder.year?.text = mCarlist[position].year
-        holder.make?.text = mCarlist[position].make
-        holder.model?.text = mCarlist[position].model
+        holder.cartitles?.text = mCarlist[position].year + " " + mCarlist[position].make + " " +
+                mCarlist[position].model + " " + mCarlist[position].trim
+        holder.carotherdetails?.text =
+            "$ " + mCarlist[position].currentPrice + "  |  " + mCarlist[position].mileage + " k mi "
+        holder.carlocation.text =
+            mCarlist[position].dealer?.city + "," + mCarlist[position].dealer?.state
+
+
         Glide.with(holder.image)
-            .load(mCarlist[position].images?.firstPhoto?.medium)
+            .load(mCarlist[position].images?.firstPhoto?.large)
             .into(holder.image)
-        holder.model.setOnClickListener {
-            listener.onRecyclerViewItemClick(holder.model, mCarlist[position])
+        holder.callButton.setOnClickListener {
+            listener.onRecyclerViewItemClick(holder.callButton, mCarlist[position])
 
         }
         holder.cardView.setOnClickListener {
@@ -47,9 +51,11 @@ class CarlistAdapter (
     }
 
     class QuestionViewHolder(containerView: View) : RecyclerView.ViewHolder(containerView) {
-        val year = containerView.yearText
-        val make = containerView.makeTextview
-        val model = containerView.modelTextview
+        val cartitles = containerView.cartitles
+        val carotherdetails = containerView.carotherdetails
+        val carlocation = containerView.carlocation
+        val callButton = containerView.callButton
+
         val image = containerView.CarimageView
         val cardView = containerView.carCardview
     }

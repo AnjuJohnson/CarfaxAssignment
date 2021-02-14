@@ -1,87 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/cardheight"
+    android:background="@color/white">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/carCardview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:id="@+id/carCardview">
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin3"
+        android:layout_marginTop="@dimen/margin3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="195dp">
+            <ImageView
+                android:id="@+id/CarimageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toTopOf="@+id/guidelineimage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></ImageView>
 
-                <ImageView
-
-                    android:id="@+id/CarimageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="195dp"
-                    android:scaleType="matrix" />
-
-                <TextView
-                    android:id="@+id/textViewRating"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginBottom="15dp"
-                    android:gravity="center"
-                    android:padding="4dp"
-                    android:text="UA"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="10sp" />
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineimage"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/yearText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#1A1A1A"
-                    android:textSize="18sp"
-                    tools:text="1990" />
-
-                <TextView
-                    android:id="@+id/makeTextview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/yearText"
-                    tools:text="English" />
-
-                <Button
-                    android:id="@+id/modelTextview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:text="call" />
-
-            </RelativeLayout>
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.6" />
 
             <TextView
+                android:id="@+id/cartitles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/marginsmall"
+                android:layout_marginTop="@dimen/marginsmallsmall"
+                android:text="Fiat"
+                android:textSize="@dimen/textlarge"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/CarimageView"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineimage"></TextView>
+
+            <TextView
+                android:id="@+id/carotherdetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginsmallsmall"
+                android:text="$ 147000"
+                app:layout_constraintStart_toStartOf="@id/cartitles"
+                app:layout_constraintTop_toBottomOf="@id/cartitles"></TextView>
+
+            <TextView
+                android:id="@+id/carlocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginsmallsmall"
+                android:text="$ 147000"
+                app:layout_constraintStart_toStartOf="@id/cartitles"
+                app:layout_constraintTop_toBottomOf="@id/carotherdetails"></TextView>
+
+            <LinearLayout
+                android:id="@+id/greyLine"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="7dp"
-                android:background="#414141" />
+                android:layout_marginStart="@dimen/marginsmall"
+                android:layout_marginTop="@dimen/marginsmall"
+                android:layout_marginEnd="@dimen/marginsmall"
+                android:background="@color/grey"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@id/cartitles"
+                app:layout_constraintTop_toBottomOf="@+id/carlocation"></LinearLayout>
 
-        </LinearLayout>
+            <TextView
+                android:id="@+id/callButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginsmall"
+                android:layout_marginBottom="@dimen/marginsmall"
+                android:text="@string/callbutton"
+                android:textColor="@color/cornblue"
+                android:textSize="@dimen/textlarge"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/greyLine"></TextView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

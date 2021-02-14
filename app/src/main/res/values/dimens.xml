@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin3">3dp</dimen>
+    <dimen name="marginsmall">10dp</dimen>
+    <dimen name="marginsmallsmall">7dp</dimen>
+    <dimen name="cardheight">350dp</dimen>
+    <dimen name="textstandard">12sp</dimen>
+    <dimen name="textlarge">16sp</dimen>
+</resources>

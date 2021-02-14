@@ -25,7 +25,7 @@ class CarProfileActivity : AppCompatActivity() {
     }
     private fun loadCardUi(car:Car){
         Glide.with(CarimageView)
-            .load(car.images?.firstPhoto?.medium)
+            .load(car.images?.firstPhoto?.large)
             .into(CarimageView)
 
         yearText.text=car.year

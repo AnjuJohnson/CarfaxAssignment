@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">CarfaxAssignment</string>
+    <string name="app_name">CARFAX</string>
+    <string name="callbutton">CALL DEALER</string>
 </resources>

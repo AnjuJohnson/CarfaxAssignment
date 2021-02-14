@@ -78,7 +78,7 @@ data class Carlist(
 ):Serializable
 
 data class firstphoto(
-    val medium: String
+    val large: String
 ):Serializable
 
 data class image(
