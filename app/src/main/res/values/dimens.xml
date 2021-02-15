@@ -6,4 +6,5 @@
     <dimen name="cardheight">350dp</dimen>
     <dimen name="textstandard">12sp</dimen>
     <dimen name="textlarge">16sp</dimen>
+    <dimen name="textlargelarge">18sp</dimen>
 </resources>
